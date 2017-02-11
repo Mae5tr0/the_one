@@ -1,0 +1,2 @@
+class ValueObject < OpenStruct
+end
