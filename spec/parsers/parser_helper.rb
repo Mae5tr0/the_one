@@ -1,5 +1,4 @@
 require 'zip'
-require 'ostruct'
 
 require_relative '../../lib/uploader/parsers/base_parser'
 require_relative '../../lib/uploader/route'

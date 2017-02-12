@@ -6,8 +6,8 @@ RSpec.describe Uploader::SniffersParser, type: :parser do
 
   it 'correct parse routes from files' do
     is_expected.to contain_exactly(
-      Uploader::Route.new('sentinels', 'alpha', 'gamma', '2030-12-31T13:00:01', '2030-12-31T13:00:03'),
-      Uploader::Route.new('sentinels', 'delta', 'gamma', '2030-12-31T13:00:02', '2030-12-31T13:00:04')
+      Uploader::Route.new('sniffers', 'lambda', 'omega', '2030-12-31T13:00:06', '2030-12-31T13:00:09'),
+      Uploader::Route.new('sniffers', 'lambda', 'omega', '2030-12-31T13:00:07', '2030-12-31T13:00:09'),
     )
   end
 end

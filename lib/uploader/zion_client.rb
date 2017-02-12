@@ -9,6 +9,7 @@ module Uploader
 
     attr_accessor :passphrase
 
+    #TODO documentation
     def initialize(passphrase)
       @passphrase = passphrase
     end

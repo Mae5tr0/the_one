@@ -2,6 +2,7 @@ require 'json'
 
 module Uploader
   class LoopholesParser < BaseParser
+    #TODO optimize through merge
     def parse
       node_pairs = extract_data('node_pairs')
       routes = extract_data('routes')

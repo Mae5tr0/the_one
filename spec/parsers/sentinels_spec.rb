@@ -10,10 +10,4 @@ RSpec.describe Uploader::SentinelsParser, type: :parser do
       Uploader::Route.new('sentinels', 'delta', 'gamma', '2030-12-31T13:00:02', '2030-12-31T13:00:04')
     )
   end
-
-  it 'filter route with 1 point' do
-    is_expected.not_to include(
-      Uploader::Route.new('sentinels', 'zeta', 'zeta', '2030-12-31T13:00:02', '2030-12-31T13:00:02')
-    )
-  end
 end

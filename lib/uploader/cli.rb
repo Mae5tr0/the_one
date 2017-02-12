@@ -4,6 +4,7 @@ module Uploader
   class CLI < Thor
     include Thor::Actions
 
+    #TODO complete
     desc 'upload', 'Download, parse and upload sources'
     method_option :sources, aliases: '-s', desc: 'Alphanumeric code', type: :array, required: true
     method_option :passphrase, aliases: '-p', desc: 'Fasten your seat belt Dorothy', type: :string, required: true

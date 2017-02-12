@@ -1,6 +1,7 @@
 require_relative '../lib/uploder'
 require 'httplog'
 
+#TODO delete
 SOURCE_PARSER_MAP = {
   # loopholes: Uploader::Loopholes,
   # sniffers: Uploader::Sniffers,

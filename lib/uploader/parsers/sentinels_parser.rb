@@ -12,6 +12,7 @@ module Uploader
 
     private
 
+    #TODO improve readability
     def parse_routes(raw_content)
       routes = {}
       CSV.new(raw_content.gsub('"', '')).drop(1).map do |row|

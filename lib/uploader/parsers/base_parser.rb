@@ -1,7 +1,7 @@
 module Uploader
+  #TODO documentation
   class BaseParser
     attr_accessor :files
-
 
     def initialize(files)
       @files = files
