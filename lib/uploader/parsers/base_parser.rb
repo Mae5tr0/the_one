@@ -1,17 +1,16 @@
 module Uploader
-  module Parsers
-    class BaseParser
-      attr_accessor :raw_data
+  class BaseParser
+    attr_accessor :files
 
-      def initialize(data)
-        @raw_data = data
-      end
 
-      # Every parser should implement this method
-      # Method should return ValueObject array
-      def parse
-        fail NotImplementedError
-      end
+    def initialize(files)
+      @files = files
+    end
+
+    # Every parser should implement this method
+    # @return Array<Route>
+    def parse
+      fail NotImplementedError
     end
   end
 end

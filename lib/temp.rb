@@ -1,11 +1,18 @@
 require_relative '../lib/uploder'
 require 'httplog'
 
-client = Uploader::Client.new('http://challenge.distribusion.com/the_one/routes{?passphrase,source}', 'Kans4s-i$-g01ng-by3-bye')
+SOURCE_PARSER_MAP = {
+  # loopholes: Uploader::Loopholes,
+  # sniffers: Uploader::Sniffers,
+  sentinels: Uploader::SentinelsParser
+}.freeze
 
-data = client.download('sentinels')
+client = Uploader::ZionClient.new('Kans4s-i$-g01ng-by3-bye')
+
+parser = Uploader::SentinelsParser.new(client.download('sentinels'))
+routes = parser.parse
 # data = client.download('sniffers')
 # data = client.download('loopholes')
 
-puts data
-client.upload(data)
+
+puts routes

@@ -13,11 +13,10 @@ module Uploader
       puts options[:passphrase].class
     end
 
-
     private
 
     def client
-      @client ||= Uploader::Client.new('http://challenge.distribusion.com/the_one/routes{?passphrase}{?source}', 'Kans4s-i$-g01ng-by3-bye')
+      @client ||= Uploader::ZionClient.new('Kans4s-i$-g01ng-by3-bye')
     end
   end
 end
