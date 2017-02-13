@@ -16,7 +16,7 @@ module Uploader
 
         start_node = route_sequence.first
         end_node = route_sequence.last
-        period = route_sequence.reduce(0) { |memo, sequence| memo + sequence[:duration_in_milliseconds].to_i / 1000 }
+        period = route_sequence.reduce(0) { |a, e| a + e[:duration_in_milliseconds].to_i / 1000 }
         start_time = Time.strptime("#{route[:time]} #{route[:time_zone]}", '%FT%T %Z')
 
         Route.new(
@@ -48,7 +48,7 @@ module Uploader
 
     def extract_data(key)
       result = { :"#{key}" => [] }
-      file = @files.find { |file| file.name == "#{key}.csv" }
+      file = @files.find { |parsed_file| parsed_file.name == "#{key}.csv" }
       return result if file.nil?
 
       CSV.new(file.content.delete('"'), col_sep: ', ', headers: true, header_converters: :symbol).map do |row|

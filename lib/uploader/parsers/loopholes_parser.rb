@@ -4,10 +4,10 @@ module Uploader
   class LoopholesParser < BaseParser
     def parse
       grouped_routes = group_routes(
-          merge_node_pairs_routes(
-              extract_data('node_pairs'),
-              extract_data('routes')
-          )
+        merge_node_pairs_routes(
+          extract_data('node_pairs'),
+          extract_data('routes')
+        )
       )
 
       grouped_routes.values.select { |routes| routes.length > 1 }.map do |routes|
@@ -24,7 +24,7 @@ module Uploader
     private
 
     def extract_data(key)
-      file = @files.find { |file| file.name == "#{key}.json" }
+      file = @files.find { |parsed_file| parsed_file.name == "#{key}.json" }
       return { :"#{key}" => [] } if file.nil?
       JSON.parse(file.content, symbolize_names: true)
     end

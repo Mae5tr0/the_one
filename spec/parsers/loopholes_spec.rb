@@ -6,7 +6,7 @@ RSpec.describe Uploader::LoopholesParser, type: :parser do
   it 'correct parse routes from files' do
     is_expected.to contain_exactly(
       Uploader::Route.new('loopholes', 'gamma', 'lambda', '2030-12-31T13:00:04', '2030-12-31T13:00:06'),
-      Uploader::Route.new('loopholes', 'beta', 'lambda', '2030-12-31T13:00:05', '2030-12-31T13:00:07'),
+      Uploader::Route.new('loopholes', 'beta', 'lambda', '2030-12-31T13:00:05', '2030-12-31T13:00:07')
     )
   end
 end
