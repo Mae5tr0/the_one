@@ -1,4 +1,4 @@
-# The one - helper for Neo extracting from Matrix
+# The one - helper for Neo to extracting from Matrix
 
 ## Description
 

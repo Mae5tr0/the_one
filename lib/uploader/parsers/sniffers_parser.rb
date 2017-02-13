@@ -51,10 +51,10 @@ module Uploader
       file = @files.find { |file| file.name == "#{key}.csv" }
       return result if file.nil?
 
-      CSV.new(file.content.delete('"'), headers: true).map do |row|
+      CSV.new(file.content.delete('"'), col_sep: ', ', headers: true, header_converters: :symbol).map do |row|
         entry = {}
         row.each do |k, v|
-          entry[:"#{k.strip}"] = v.strip
+          entry[k] = v
         end
         entry
       end

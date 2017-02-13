@@ -8,7 +8,7 @@ module ParserHelper
     files = []
     Zip::File.open("spec/support/#{filename}.zip") do |zip_file|
       zip_file.each do |entry|
-        next if entry.name_is_directory?
+        next if entry.name =~ /__MACOSX/ || entry.name =~ /\.DS_Store/ || !entry.file?
         files << OpenStruct.new(
           name: entry.name.split('/').last,
           content: entry.get_input_stream.read
