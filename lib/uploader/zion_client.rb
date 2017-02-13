@@ -34,10 +34,10 @@ module Uploader
         temp_file.rewind
         Zip::File.open(temp_file) do |zip_file|
           zip_file.each do |entry|
-            next if entry.name =~ /__MACOSX/ or entry.name =~ /\.DS_Store/ or !entry.file?
+            next if entry.name =~ /__MACOSX/ || entry.name =~ /\.DS_Store/ || !entry.file?
             files << OpenStruct.new(
-                name: filename(entry.name),
-                content: entry.get_input_stream.read
+              name: filename(entry.name),
+              content: entry.get_input_stream.read
             )
           end
         end

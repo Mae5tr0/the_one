@@ -12,19 +12,19 @@ module Uploader
       routes.map do |route|
         route_id = route[:route_id]
         route_sequence = sequences.select { |sequence| sequence[:route_id] == route_id }
-        next if route_sequence.length < 1
+        next if route_sequence.empty?
 
         start_node = route_sequence.first
         end_node = route_sequence.last
-        period = route_sequence.reduce(0) { |memo, sequence| memo + sequence[:duration_in_milliseconds].to_i/1000 }
+        period = route_sequence.reduce(0) { |memo, sequence| memo + sequence[:duration_in_milliseconds].to_i / 1000 }
         start_time = Time.strptime("#{route[:time]} #{route[:time_zone]}", '%FT%T %Z')
 
         Route.new(
-            'sniffers',
-            start_node[:start_node],
-            end_node[:end_node],
-            start_time.utc.strftime('%FT%T'),
-            (start_time + period).utc.strftime('%FT%T')
+          'sniffers',
+          start_node[:start_node],
+          end_node[:end_node],
+          start_time.utc.strftime('%FT%T'),
+          (start_time + period).utc.strftime('%FT%T')
         )
       end.reject(&:nil?)
     end
@@ -51,7 +51,7 @@ module Uploader
       file = @files.find { |file| file.name == "#{key}.csv" }
       return result if file.nil?
 
-      CSV.new(file.content.gsub('"', ''), headers: true).map do |row|
+      CSV.new(file.content.delete('"'), headers: true).map do |row|
         entry = {}
         row.each do |k, v|
           entry[:"#{k.strip}"] = v.strip

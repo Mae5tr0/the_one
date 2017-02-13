@@ -1,0 +1,13 @@
+AllCops:
+  TargetRubyVersion: 2.2
+  Exclude:
+    - '**/tmp/**/*'
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 20
+
+Style/Documentation:
+  Enabled: false

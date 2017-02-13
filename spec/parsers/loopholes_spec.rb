@@ -1,7 +1,6 @@
 require_relative '../../lib/uploader/parsers/loopholes_parser'
 
 RSpec.describe Uploader::LoopholesParser, type: :parser do
-
   let(:subject) { described_class.new(read_zip('loopholes')).parse }
 
   it 'correct parse routes from files' do

@@ -12,7 +12,7 @@ module Uploader
     end
 
     def parse
-      fail NotImplementedError
+      raise NotImplementedError
     end
   end
 end

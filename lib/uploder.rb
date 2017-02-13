@@ -11,4 +11,3 @@ require_relative 'uploader/parsers/sniffers_parser'
 
 module Uploader
 end
-

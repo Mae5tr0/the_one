@@ -10,8 +10,8 @@ module ParserHelper
       zip_file.each do |entry|
         next if entry.name_is_directory?
         files << OpenStruct.new(
-            name: entry.name.split('/').last,
-            content: entry.get_input_stream.read
+          name: entry.name.split('/').last,
+          content: entry.get_input_stream.read
         )
       end
     end

@@ -12,26 +12,24 @@ module Uploader
 
     private
 
-    #TODO improve readability
+    # TODO: improve readability
     def parse_routes(raw_content)
       routes = {}
-      CSV.new(raw_content.gsub('"', '')).drop(1).map do |row|
+      CSV.new(raw_content.delete('"')).drop(1).map do |row|
         routes[row[0]] = routes.fetch(row[0], []).push(
-          {
-            node: row[1].strip,
-            index: row[2].to_i,
-            time: Time.parse(row[3]).utc.strftime('%FT%T')
-          }
+          node: row[1].strip,
+          index: row[2].to_i,
+          time: Time.parse(row[3]).utc.strftime('%FT%T')
         )
       end
       routes.values.select { |route| route.length > 1 }.map do |route|
         sorted_route = route.sort_by { |hash| hash[:index] }
         Route.new(
-            'sentinels',
-            sorted_route.first[:node],
-            sorted_route.last[:node],
-            sorted_route.first[:time],
-            sorted_route.last[:time]
+          'sentinels',
+          sorted_route.first[:node],
+          sorted_route.last[:node],
+          sorted_route.first[:time],
+          sorted_route.last[:time]
         )
       end
     end

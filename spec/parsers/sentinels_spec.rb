@@ -1,7 +1,6 @@
 require_relative '../../lib/uploader/parsers/sentinels_parser'
 
 RSpec.describe Uploader::SentinelsParser, type: :parser do
-
   let(:subject) { described_class.new(read_zip('sentinels')).parse }
 
   it 'correct parse routes from files' do
