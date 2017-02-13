@@ -1,9 +1,7 @@
 require_relative '../lib/uploder'
 
-#TODO improve message
-
 puts ''
-puts 'Uploader data'
+puts 'Helper for extracting Neo from Matrix'
 puts ''
 
 Uploader::CLI.start(ARGV)

@@ -4,20 +4,28 @@ require 'open-uri'
 require 'tempfile'
 
 module Uploader
+  # Zion client, provide interface for download raw data and upload routes
+  #
+  # @attr passphrase [String] secret passphrase for accessing to Zion
+  #
+  # @example
+  #  client = Uploader::ZionClient.new('secret_passphrase')
+  #
   class ZionClient
     BASE_URL = 'http://challenge.distribusion.com/the_one/routes'.freeze
 
     attr_accessor :passphrase
 
-    #TODO documentation
     def initialize(passphrase)
       @passphrase = passphrase
     end
 
-    # Download specified source
+    # Download and extract specified source
     #
-    # @param source [String]
-    # @return [Array<Hash>]
+    # @param source [String] one of [sentinels, sniffers, loopholes]
+    # @return [Array<OpenStruct>]
+    #   @option name [String] filename from zip archive
+    #   @option content [String] raw content
     def download(source)
       files = []
       temp_file = Tempfile.new('archive')
@@ -26,7 +34,7 @@ module Uploader
         temp_file.rewind
         Zip::File.open(temp_file) do |zip_file|
           zip_file.each do |entry|
-            next if entry.name_is_directory?
+            next if entry.name =~ /__MACOSX/ or entry.name =~ /\.DS_Store/ or !entry.file?
             files << OpenStruct.new(
                 name: filename(entry.name),
                 content: entry.get_input_stream.read

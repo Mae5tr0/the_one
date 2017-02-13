@@ -1,5 +1,9 @@
 module Uploader
-  #TODO documentation
+  # Base class for all parsers
+  #
+  # Every parser should implement parse method
+  # Parse method should return array contained Route models
+  #
   class BaseParser
     attr_accessor :files
 
@@ -7,8 +11,6 @@ module Uploader
       @files = files
     end
 
-    # Every parser should implement this method
-    # @return Array<Route>
     def parse
       fail NotImplementedError
     end

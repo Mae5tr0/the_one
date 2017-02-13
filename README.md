@@ -1,13 +1,14 @@
-# The one
+# The one - helper for Neo extracting from Matrix
 
-	Downloader, parser and uploader data for help extracting Neo from Matrix.
+## Description
+
+App download zip files from specified source, parsed it and upload.
 	
-	For download, parse and upload resources execute scripts
+## Usage
 	
-	```	
-		ruby bin/cli.rb upload -s=sentinels sniffers loopholes -p=super_secret_passphrase
-	```			
-	
-	
-	
-	ruby bin/cli.rb upload -s=sentinels sniffers loopholes -p=Kans4s-i$-g01ng-by3-bye
+	$ ruby bin/cli.rb upload -s=sentinels sniffers loopholes -p=super_secret_passphrase
+		
+Some notes: if key contained special bash symbols, they should be escaped:
+		
+	Kans4s-i$ -> Kans4s-i\$
+		
